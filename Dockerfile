@@ -13,6 +13,7 @@ RUN apt-get update && \
 ADD xstartup /root/.vnc/xstartup
 ADD passwd /root/.vnc/passwd
 
-RUN chmod 600 /root/.vnc/passwd
+RUN chmod 777 /root/.vnc/passwd && \
+    chmod 777 /root/.vnc/xstartup
 
 CMD /usr/bin/vncserver :1 -geometry 1280x800 -depth 24 && tail -f /root/.vnc/*:1.log
